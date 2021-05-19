@@ -1,2 +1,2 @@
 # Automation
-repositorio de automatioin
+repositorio de automation
