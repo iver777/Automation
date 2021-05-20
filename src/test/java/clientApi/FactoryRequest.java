@@ -1,8 +1,8 @@
-package ClientApi;
+package clientApi;
 
 
 public class FactoryRequest {
-
+    //solicitud en caso de que sea put,post, get, delete.
     public static RequestClient make (String type){
         RequestClient client;
         switch (type){

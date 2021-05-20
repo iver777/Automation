@@ -1,8 +1,9 @@
-package ClientApi;
+package clientApi;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+//Eliminar dado una archivo json
 public class RequestDELETE extends RequestClient {
 
     @Override

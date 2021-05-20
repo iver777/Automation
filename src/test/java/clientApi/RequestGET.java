@@ -1,8 +1,9 @@
-package ClientApi;
+package clientApi;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+//Obtener
 public class RequestGET extends RequestClient {
 
     @Override

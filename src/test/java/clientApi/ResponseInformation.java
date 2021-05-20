@@ -1,5 +1,5 @@
-package ClientApi;
-
+package clientApi;
+//manejar informacion de  respuesta
 public class ResponseInformation {
     private String responseBody;
     private String responseMessage;

@@ -1,9 +1,10 @@
-package ClientApi;
+package clientApi;
 import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 import java.util.HashMap;
 import java.util.Map;
 
+//datos requeridos
 public class RequestInformation {
 
     private String url;
