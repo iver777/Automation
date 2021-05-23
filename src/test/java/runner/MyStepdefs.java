@@ -9,6 +9,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import helpers.JsonHelper;
+import org.json.JSONException;
 import org.junit.Assert;
 
 import java.util.HashMap;
@@ -37,6 +39,7 @@ public class MyStepdefs {
         } else {
             request.addHeaders(BASIC_AUTHENTICATION_HEADER, BASIC_AUTHENTICATION);
         }
+
         response = FactoryRequest.make(method.toLowerCase()).send(request);
     }
 
@@ -53,10 +56,16 @@ public class MyStepdefs {
         return value;
     }
 
+    @And("^I expected the response body is equal$")
+    public void iExpectedTheResponseBodyIsEqual(String expectResponseBody) throws JSONException {
+        System.out.println("Response Body "+this.replaceVariables(response.getResponseBody()));
+        Assert.assertTrue("ERROR el response body es incorrecto", JsonHelper.areEqualJSON(this.replaceVariables(expectResponseBody), response.getResponseBody()));
+    }
 
-    @And("^I excepted the response body is  equal$")
-    public void iExceptedTheResponseBodyIsEqual() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @And("^I get the property value '(.*)' and save on (.*)$")
+    public void iGetThePropertyValueValueAndSaveOnValue(String property, String nameVariable) throws JSONException {
+        String value = JsonHelper.getValueFromJSON(response.getResponseBody(),property);
+        variables.put(nameVariable, value);
+        System.out.println("variable : "+nameVariable+" value :"+variables.get(nameVariable) );
     }
 }
