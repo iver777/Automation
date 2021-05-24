@@ -28,7 +28,7 @@ public class MyStepdefs {
     @Given("^I have authentication to todo\\.ly$")
     public void iHaveAuthenticationToTodoLy() {
     }
-
+    //metodo general donde se crea, obtiene, elimina, actualiza
     @When("^I send (POST|PUT|DELETE|GET) request '(.*)' with json and (TOKEN|BASIC) authentication$")
     public void iSendRequestApiUserJsonWithJson(String method, String url, String authentication, String jsonBody) {
         RequestInformation request = new RequestInformation();
@@ -42,7 +42,7 @@ public class MyStepdefs {
 
         response = FactoryRequest.make(method.toLowerCase()).send(request);
     }
-
+    //nos indica si es code 200
     @Then("^I expected the response code (\\d+)$")
     public void iExpectedTheResponseCode(int expectResponseCode) {
         System.out.println(" Response Code "+ response.getResponseCode());
@@ -68,4 +68,6 @@ public class MyStepdefs {
         variables.put(nameVariable, value);
         System.out.println("variable : "+nameVariable+" value :"+variables.get(nameVariable) );
     }
+
+
 }

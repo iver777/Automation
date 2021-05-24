@@ -7,17 +7,41 @@ Feature: Project
   """
    {
 
-    "Content": " New Project",
+    "Content": "New Project",
     "Icon": "5"
 
 }
   """
     Then I expected the response code 200
 
+    And I expected the response body is equal
+    """
+    {
+      "Id": EXCLUDE,
+    "Content": "New Project",
+    "ItemsCount": 0,
+    "Icon": 5,
+    "ItemType": 2,
+    "ParentId": null,
+    "Collapsed": false,
+    "ItemOrder": EXCLUDE,
+    "Children": [],
+    "IsProjectShared": false,
+    "ProjectShareOwnerName": null,
+    "ProjectShareOwnerEmail": null,
+    "IsShareApproved": false,
+    "IsOwnProject": true,
+    "LastSyncedDateTime": EXCLUDE,
+    "LastUpdatedDate": EXCLUDE,
+    "Deleted": false,
+    "SyncClientCreationId": null
+    }
+    """
+
 
     And I get the property value 'Id' and save on ID_PROJECT
 
-    And I get the property value 'Content' and save on Content
+    #And I get the property value 'Content' and save on Content
 
 
     #actualizar nombre de proyecto
@@ -25,7 +49,7 @@ Feature: Project
     When I send PUT request 'api/projects/ID_PROJECT.json' with json and BASIC authentication
     """
     {
-      "Content": "Nuevo"
+      "Content": "New"
     }
      """
     Then I expected the response code 200
